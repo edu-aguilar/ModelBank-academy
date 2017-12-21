@@ -1,23 +1,73 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/paper-expansion-panel/paper-expansion-panel.html">
 
 <dom-module id="home-view">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style>
       :host {
+        width: 70%;
+        margin: 0 auto;
         display: block;
-
         padding: 16px;
+        --layout-flex: {
+          font-weight: bold;
+        }
+      }
+      .heroes-list-wrapper .slot-wrapper {
+        padding: 1rem;
       }
     </style>
 
-    <h1>Home view</h1>
+    <h1>Formación Model Bank</h1>
+
+    <div class="heroes-list-wrapper">
+      <template is="dom-repeat" items="{{courseData}}">
+        <paper-expansion-panel header="[[item.header]]" opened$="[[item.opened]]">
+          <div class="slot-wrapper">
+            <span>[[item.link]]</span>
+          </div>
+        </paper-expansion-panel>
+      </template>
+    </div>
+
   </template>
   <script>
     // Your new element extends the Polymer.Element base class
     class HomeView extends Polymer.Element {
       static get is() { return 'home-view'; }
+
+      static get properties() {
+        return {
+          courseData: {
+            type: Array,
+            value: function() {
+              return [{
+                header: 'Módulo 1 - GIT',
+                link: 'yepa yepa',
+                opened: true
+              },
+              {
+                header: 'Módulo 1 - Web Components y Polymer',
+                link: 'yepa yepa',
+                opened: false
+              },
+              {
+                header: 'Módulo 1 - CSS',
+                link: 'yepa yepa',
+                opened: false
+              },
+              {
+                header: 'Módulo 1 - ES6',
+                link: 'yepa yepa',
+                opened: false
+              }];
+            }
+          },
+        };
+      }
     }
     // Now, register your new custom element so the browser can use it
     customElements.define(HomeView.is, HomeView);
