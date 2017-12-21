@@ -16,14 +16,14 @@
           font-weight: bold;
         }
       }
-      .heroes-list-wrapper .slot-wrapper {
+      .courses-list-wrapper .slot-wrapper {
         padding: 1rem;
       }
     </style>
 
     <h1>Formación Model Bank</h1>
 
-    <div class="heroes-list-wrapper">
+    <div class="courses-list-wrapper">
       <template is="dom-repeat" items="{{courseData}}">
         <paper-expansion-panel header="[[item.header]]" opened$="[[item.opened]]">
           <div class="slot-wrapper">
@@ -47,24 +47,24 @@
               return [{
                 header: 'Módulo 1 - GIT',
                 link: 'yepa yepa',
-                opened: true
+                opened: true,
               },
               {
                 header: 'Módulo 1 - Web Components y Polymer',
                 link: 'yepa yepa',
-                opened: false
+                opened: false,
               },
               {
                 header: 'Módulo 1 - CSS',
                 link: 'yepa yepa',
-                opened: false
+                opened: false,
               },
               {
                 header: 'Módulo 1 - ES6',
                 link: 'yepa yepa',
-                opened: false
+                opened: false,
               }];
-            }
+            },
           },
         };
       }
