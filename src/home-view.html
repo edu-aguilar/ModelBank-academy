@@ -16,12 +16,39 @@
           font-weight: bold;
         }
       }
+      .brand-list-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        grid-gap: 2rem;
+        padding: 1rem 0;
+      }
+      .brand-list-wrapper .img-wrapper {
+        transition: 0.3s;
+      }
+      .brand-list-wrapper .img-wrapper:hover {
+        transform: rotateY(10deg);
+        box-shadow: 7px 7px 22px -2px rgba(217,217,217,1);
+      }
+      .brand-list-wrapper .img-wrapper img {
+        width: 100%;
+        height: auto;
+      }
       .courses-list-wrapper .slot-wrapper {
         padding: 1rem;
       }
     </style>
 
     <h1>Formación Model Bank</h1>
+
+    <div class="brand-list-wrapper">
+      <template is="dom-repeat" items="{{imgCollection}}">
+        <div class="img-wrapper">
+          <img src="[[item.img]]" alt="">
+        </div>
+      </template>
+    </div>
 
     <div class="courses-list-wrapper">
       <template is="dom-repeat" items="{{courseData}}">
@@ -63,6 +90,20 @@
                 header: 'Módulo 1 - ES6',
                 link: 'yepa yepa',
                 opened: false,
+              }];
+            },
+          },
+          imgCollection: {
+            type: Array,
+            value: function() {
+              return [{
+                img: 'images/ing-logo.png'
+              },
+              {
+                img: 'images/polymer-logo.png'
+              },
+              {
+                img: 'images/sopra-logo.png'
               }];
             },
           },
