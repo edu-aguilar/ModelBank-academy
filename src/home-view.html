@@ -38,6 +38,9 @@
       .courses-list-wrapper .slot-wrapper {
         padding: 1rem;
       }
+      .courses-list-wrapper .slot-wrapper a {
+        text-decoration: none;
+      }
     </style>
 
     <h1>Formación Model Bank</h1>
@@ -54,7 +57,11 @@
       <template is="dom-repeat" items="{{courseData}}">
         <paper-expansion-panel header="[[item.header]]" opened$="[[item.opened]]">
           <div class="slot-wrapper">
-            <span>[[item.link]]</span>
+            <ul>
+              <template is="dom-repeat" items="{{item.links}}">
+                <li><a href="[[item.url]]" target="_blank">[[item.title]]</a></li>
+              </template>
+            </ul>
           </div>
         </paper-expansion-panel>
       </template>
@@ -73,22 +80,42 @@
             value: function() {
               return [{
                 header: 'Módulo 1 - GIT',
-                link: 'yepa yepa',
+                links: [{
+                  url: 'http://rogerdudler.github.io/git-guide/',
+                  title: 'GIT essentials'
+                },
+                {
+                  url: 'https://danielkummer.github.io/git-flow-cheatsheet/index.html',
+                  title: 'GIT flow'
+                }],
                 opened: true,
               },
               {
                 header: 'Módulo 1 - Web Components y Polymer',
-                link: 'yepa yepa',
+                links: [{
+                  url: 'http://www.marca.com',
+                  title: 'prueba'
+                }],
                 opened: false,
               },
               {
                 header: 'Módulo 1 - CSS',
-                link: 'yepa yepa',
+                links: [{
+                  url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
+                  title: 'Flexbox'
+                },
+                {
+                  url: 'https://css-tricks.com/snippets/css/complete-guide-grid/',
+                  title: 'Grid Layout'
+                }],
                 opened: false,
               },
               {
                 header: 'Módulo 1 - ES6',
-                link: 'yepa yepa',
+                links: [{
+                  url: 'http://stack.formidable.com/es6-interactive-guide/#/',
+                  title: 'ES6 essentials'
+                }],
                 opened: false,
               }];
             },
