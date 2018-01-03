@@ -38,8 +38,13 @@
       .courses-list-wrapper .slot-wrapper {
         padding: 1rem;
       }
-      .courses-list-wrapper .slot-wrapper a {
+      .resources-list-wrapper .slot-wrapper a, .courses-list-wrapper .slot-wrapper a {
         text-decoration: none;
+      }
+
+      .resources .password-info {
+        font-weight: 200;
+        font-size: 12px;
       }
     </style>
 
@@ -65,6 +70,22 @@
           </div>
         </paper-expansion-panel>
       </template>
+    </div>
+
+    <h2 class="resources">Recursos <span class="password-info">Preguntar a Jose Manuel Diago o Álvaro González Luis por las contraseñas</span></h2>
+
+    <div class="resources-list-wrapper">
+      <paper-expansion-panel header="[[resources.header]]">
+        <div class="slot-wrapper">
+          <ul>
+            <template is="dom-repeat" items="{{resources.links}}">
+              <li>
+                <a href="[[item.url]]" target="_blank">[[item.title]]</a>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </paper-expansion-panel>
     </div>
 
   </template>
@@ -136,6 +157,26 @@
               {
                 img: 'images/sopra-logo.png',
               }];
+            },
+          },
+          resources: {
+            type: Object,
+            value: function() {
+              return {
+                header: 'libros técnicos',
+                links: [{
+                  url: 'https://mega.nz/#!BlBT2AKA',
+                  title: 'Git for teams',
+                },
+                {
+                  url: 'https://mega.nz/#!5sQBjR6L',
+                  title: 'Object Oriented JavaScript',
+                },
+                {
+                  url: 'https://mega.nz/#!U0px2Ahb',
+                  title: 'Responsive web design with HTML5 & CSS3',
+                }],
+              };
             },
           },
         };
